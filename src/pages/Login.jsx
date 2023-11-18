@@ -6,10 +6,12 @@ const Login = () => {
     <div className={styles.center}>
       <form className={styles.form}>
         <h1 className={styles.heading}> Login </h1>
+
         <label htmlFor="email" className={styles.label}>
           Email:
         </label>
         <input type="email" className={styles.input} id="mail" name="user_email" />
+        
         <label htmlFor="password" className={styles.label}>
           Password:
         </label>
