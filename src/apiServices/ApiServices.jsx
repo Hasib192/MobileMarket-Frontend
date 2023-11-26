@@ -41,7 +41,6 @@ export async function Login_USER_API(email, password) {
 
   try {
     let response = await axios.post(URL, postBody);
-    console.log(response);
     if (response.data.status === "success") {
       toast.success(`Login Successful`);
       return true;
@@ -50,6 +49,36 @@ export async function Login_USER_API(email, password) {
       return false;
     } else {
       toast.error("Login failed");
+      return false;
+    }
+  } catch (error) {
+    toast.error("Error occured! Please try again later");
+    console.error(error.message);
+    return false;
+  }
+}
+
+export async function Create_Product_API(title, short_des, price, discount_price, image, stock, star) {
+  let URL = baseURL + "/product/create";
+
+  let postBody = {
+    title,
+    short_des,
+    price,
+    discount_price,
+    image,
+    stock,
+    star,
+  };
+
+  try {
+    let response = await axios.post(URL, postBody);
+    console.log(response);
+    if (response.data.status === "success") {
+      toast.success("Product Create Successful");
+      return true;
+    } else {
+      toast.error("Product Create Failed");
       return false;
     }
   } catch (error) {
