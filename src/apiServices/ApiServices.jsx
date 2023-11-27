@@ -73,10 +73,27 @@ export async function Create_Product_API(title, short_des, price, discount_price
 
   try {
     let response = await axios.post(URL, postBody);
-    console.log(response);
     if (response.data.status === "success") {
       toast.success("Product Create Successful");
       return true;
+    } else {
+      toast.error("Product Create Failed");
+      return false;
+    }
+  } catch (error) {
+    toast.error("Error occured! Please try again later");
+    console.error(error.message);
+    return false;
+  }
+}
+
+export async function Get_All_Products_API() {
+  let URL = baseURL + "/product/list";
+
+  try {
+    let response = await axios.get(URL);
+    if (response.data.status === "success") {
+      return response.data.data;
     } else {
       toast.error("Product Create Failed");
       return false;

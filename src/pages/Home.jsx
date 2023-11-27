@@ -1,7 +1,9 @@
+import ProductPage from "./ProductPage";
+
 const Home = () => {
   return (
-    <div className="container">
-      <h1>Hello This is home Page</h1>
+    <div className="container py-5">
+      <ProductPage />
     </div>
   );
 };
