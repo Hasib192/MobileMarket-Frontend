@@ -43,6 +43,16 @@ const CreateProduct = () => {
     } else {
       try {
         let result = await Create_Product_API(title, short_des, price, discount_price, image, stock, star);
+
+        setFormData({
+          title: "",
+          short_des: "",
+          price: "",
+          discount_price: "",
+          image: "",
+          stock: "",
+          star: "",
+        });
       } catch (e) {
         console.error("Product Create Failed: " + e.message);
       }
