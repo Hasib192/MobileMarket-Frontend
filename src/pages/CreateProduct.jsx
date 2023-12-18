@@ -60,7 +60,7 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container py-5">
       <div className="mb-3">
         <label className="form-label">Title</label>
         <input type="text" className="form-control" name="title" value={formData.title} onChange={handleChange} />

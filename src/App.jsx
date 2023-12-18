@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import CreateProduct from "./pages/CreateProduct";
 import { ToastContainer } from "react-toastify";
+import CartPage from "./pages/CartPage";
+import "./App.css"
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="create" element={<CreateProduct />} />
+          <Route path="view-cart" element={<CartPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
