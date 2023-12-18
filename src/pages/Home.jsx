@@ -2,7 +2,7 @@ import ProductPage from "./ProductPage";
 
 const Home = () => {
   return (
-    <div className="container py-5">
+    <div className="container">
       <ProductPage />
     </div>
   );
