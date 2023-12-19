@@ -1,6 +1,21 @@
-import { Outlet, Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet, Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    setIsLoggedIn(token && token.length > 0);
+  }, [location]);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <>
       <header className="p-3" style={{ backgroundColor: "#f8f9fa" }}>
@@ -25,12 +40,20 @@ const NavBar = () => {
               <input type="search" className="form-control" placeholder="Search..." aria-label="Search" />
             </form>
             <div className="text-end">
-              <NavLink to="/login" className="btn btn-outlines-primary me-2">
-                Login
-              </NavLink>
-              <NavLink to="/signup" className="btn btn-outlines-primary">
-                Sign-up
-              </NavLink>
+              {isLoggedIn ? (
+                <NavLink to="/" onClick={handleLogout} className="btn btn-outlines-primary me-2">
+                  Logout
+                </NavLink>
+              ) : (
+                <>
+                  <NavLink to="/login" className="btn btn-outlines-primary me-2">
+                    Login
+                  </NavLink>
+                  <NavLink to="/signup" className="btn btn-outlines-primary">
+                    Sign-up
+                  </NavLink>
+                </>
+              )}
             </div>
           </div>
         </div>

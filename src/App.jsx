@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
@@ -7,14 +7,13 @@ import NotFound from "./pages/NotFound";
 import CreateProduct from "./pages/CreateProduct";
 import { ToastContainer } from "react-toastify";
 import CartPage from "./pages/CartPage";
-import "./App.css"
+import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
+    <>
       <Routes>
-        <Route>
+        <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
@@ -24,7 +23,7 @@ function App() {
         </Route>
       </Routes>
       <ToastContainer />
-    </BrowserRouter>
+    </>
   );
 }
 

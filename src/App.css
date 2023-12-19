@@ -6,3 +6,7 @@
 body {
     background-color: #eee;
 }
+
+button:disabled {
+    opacity: 0.6;
+}

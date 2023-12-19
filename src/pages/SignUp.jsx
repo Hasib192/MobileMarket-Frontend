@@ -12,12 +12,13 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-
+  const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
   const { name, email, password } = formData;
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setDisable(true);
     if (validator.isEmpty(name)) {
       toast.error("Name required");
     } else if (validator.isEmpty(email) || !validator.isEmail(email)) {
@@ -34,6 +35,7 @@ const SignUp = () => {
         console.error("Registration Failed: " + e.message);
       }
     }
+    setDisable(false);
   };
 
   const handleChange = (e) => {
@@ -64,7 +66,7 @@ const SignUp = () => {
         </label>
         <input type="password" className={styles.input} name="password" value={password} onChange={handleChange} />
 
-        <button type="submit" className={styles.button}>
+        <button type="submit" className={styles.button} disabled={disable}>
           Sign Up
         </button>
         <p className={styles.paragraph}>

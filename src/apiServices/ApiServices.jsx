@@ -43,6 +43,8 @@ export async function Login_USER_API(email, password) {
     let response = await axios.post(URL, postBody);
     if (response.data.status === "success") {
       toast.success(`Login Successful`);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("email", email);
       return true;
     } else if (response.data.status === "unauthorized") {
       toast.error("No user found");

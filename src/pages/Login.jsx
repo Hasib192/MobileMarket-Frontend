@@ -11,12 +11,13 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+  const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
   const { email, password } = formData;
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setDisable(true);
     if (validator.isEmpty(email) || !validator.isEmail(email)) {
       toast.error("Email required");
     } else if (validator.isEmpty(password)) {
@@ -31,6 +32,7 @@ const Login = () => {
         console.error("Login failed: " + e.message);
       }
     }
+    setDisable(false);
   };
 
   const handleChange = (e) => {
@@ -56,7 +58,7 @@ const Login = () => {
         </label>
         <input type="password" className={styles.input} name="password" value={password} onChange={handleChange} />
 
-        <button type="submit" className={styles.button}>
+        <button type="submit" className={styles.button} disabled={disable}>
           Login
         </button>
         <p className={styles.paragraph}>
