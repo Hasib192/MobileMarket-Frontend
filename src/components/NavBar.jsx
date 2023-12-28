@@ -26,12 +26,12 @@ const NavBar = () => {
             </Link>
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li>
-                <NavLink to="/" className="nav-link px-2 link-body-emphasis">
+                {/* <NavLink to="/" className="nav-link px-2 link-body-emphasis">
                   Home
-                </NavLink>
+                </NavLink> */}
               </li>
               <li>
-                <NavLink to="/view-cart" className="nav-link px-2 link-body-emphasis">
+                <NavLink to="/view-cart" className="nav-link px-2 mx-2 link-body-emphasis">
                   View Cart
                 </NavLink>
               </li>

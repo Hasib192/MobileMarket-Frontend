@@ -69,7 +69,7 @@ const CartPage = () => {
                     <p className="mb-0">$2.99</p>
                   </div>
                   <hr className="my-4" />
-                  <div className="d-flex justify-content-between mb-4" style={{ fontWeight: 500 }}>
+                  <div className="d-flex justify-content-between" style={{ fontWeight: 500 }}>
                     <p className="mb-2">Total </p>
                     <p className="mb-2">$26.48</p>
                   </div>

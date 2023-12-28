@@ -106,3 +106,28 @@ export async function Get_All_Products_API() {
     return false;
   }
 }
+
+export async function Add_To_Cart_API(productId) {
+  let URL = baseURL + "/cart/add";
+  let postBody = { product: productId };
+  let config = {
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  };
+
+  try {
+    let { data } = await axios.post(URL, postBody, config);
+    if (data.status === true) {
+      return data;
+    } else {
+      toast.error("Error adding product to cart");
+      console.error(postBody);
+      return false;
+    }
+  } catch (error) {
+    toast.error("Error occured! Please try again later");
+    console.error(error.message);
+    return false;
+  }
+}

@@ -1,5 +1,5 @@
-const ProductCard = ({ product }) => {
-  let { image, title, short_des, price, discount_price } = product;
+const ProductCard = ({ product, addToCart }) => {
+  const { _id, image, title, short_des, price, discount_price } = product;
 
   return (
     <div className="col">
@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
           <span className="mx-1 fs-5">
             <span>৳</span> {discount_price.toLocaleString()}
           </span>
-          <a href="#" className="btn btn-primary float-end">
+          <a href="#" className="btn btn-primary float-end" onClick={(e) => addToCart(e, _id)}>
             Add to Cart
           </a>
         </div>
