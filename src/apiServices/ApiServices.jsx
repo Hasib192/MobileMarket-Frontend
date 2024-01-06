@@ -107,9 +107,9 @@ export async function Get_All_Products_API() {
   }
 }
 
-export async function Add_To_Cart_API(productId) {
+export async function Add_To_Cart_API(productId, unit) {
   let URL = baseURL + "/cart/add";
-  let postBody = { product: productId };
+  let postBody = { product: productId, unit };
   let config = {
     headers: {
       authorization: localStorage.getItem("token"),
@@ -123,6 +123,53 @@ export async function Add_To_Cart_API(productId) {
     } else {
       toast.error("Error adding product to cart");
       console.error(postBody);
+      return false;
+    }
+  } catch (error) {
+    toast.error("Error occured! Please try again later");
+    console.error(error.message);
+    return false;
+  }
+}
+
+export async function Get_Cart_LIST_API() {
+  let URL = baseURL + "/cart/list";
+  let config = {
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  };
+
+  try {
+    let { data } = await axios.get(URL, config);
+    if (data.status === true) {
+      return data;
+    } else {
+      toast.error("Error fetching cart");
+      return false;
+    }
+  } catch (error) {
+    toast.error("Error occured! Please try again later");
+    console.error(error.message);
+    return false;
+  }
+}
+
+export async function Remove_Cart_Item_API(id) {
+  let URL = baseURL + "/cart/remove/" + id;
+  console.log(URL);
+  let config = {
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  };
+
+  try {
+    let { data } = await axios.get(URL, config);
+    if (data.status === true) {
+      return true;
+    } else {
+      toast.error("Error deleting item");
       return false;
     }
   } catch (error) {

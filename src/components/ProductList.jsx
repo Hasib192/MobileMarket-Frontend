@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 const ProductList = () => {
   const [products, setProducts] = useState(null);
+  const [cart, setCart] = useState({});
 
   const navigate = useNavigate();
 
@@ -19,7 +20,16 @@ const ProductList = () => {
         toast.error("Please login first");
         navigate("/login");
       } else {
-        let result = await Add_To_Cart_API(productId);
+        const updatedCart = { ...cart };
+
+        if (productId in updatedCart) {
+          updatedCart[productId].quantity += 1;
+        } else {
+          updatedCart[productId] = { quantity: 1 };
+        }
+        setCart(updatedCart);
+
+        let result = await Add_To_Cart_API(productId, updatedCart[productId].quantity);
         if (result.status) {
           toast.success("Product added to cart!");
         }
